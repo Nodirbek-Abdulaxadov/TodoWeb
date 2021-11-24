@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+@model List<Todo>
+<h1>Todo List</h1>
+
+@foreach (var todo in Model)
+{
+    <div class="container">
+        <div class="todo">
+            <span>@todo.Title</span>
+            <sub>@todo.Time</sub>
+            <a asp-controller="home" asp-action="edit" asp-route-id="@todo.Id" class="btn"><i class="las la-edit i1"></i></a>
+            <form asp-controller="home" asp-action="delete" asp-route-id="@todo.Id">
+                <button type="submit" onclick="return confirm('Are you sure delete this todo?');" class="btn"><i class="las la-trash i2"></i></button>
+            </form>
+        </div>
+    </div>
+}
